@@ -4,7 +4,7 @@ Esboço inicial do Projeto da Disciplina de Aprendizagem de Máquina
 
 Fazer a análise do dataset de projetos do Kickstarter.
 
-Dataset: dados.csv
+Dataset: ks-projects-201801.csv
 
 Script: teste.py
 
