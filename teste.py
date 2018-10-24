@@ -16,7 +16,8 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.ensemble import AdaBoostClassifier
 from sklearn.tree import DecisionTreeClassifier
 
-df = pd.read_csv("dados.csv", encoding='utf-8', error_bad_lines=False)
+#df = pd.read_csv("dados.csv", encoding='utf-8', error_bad_lines=False)
+df = pd.read_csv('ks-projects-201801.csv', header='infer', sep=',', encoding='utf-8', engine='python')
 
 df.head()
 
@@ -43,9 +44,9 @@ print(df)
 print(len(df.main_category.unique()), "Main categories")
 print(len(df.category.unique()), "sub categories")
 
-#plota as 12 principais categorias
+#plota as 15 principais categorias
 sns.set_style('darkgrid')
-mains = df.main_category.value_counts().head(12)
+mains = df.main_category.value_counts().head(15)
 
 x = mains.values
 y = mains.index
@@ -70,9 +71,7 @@ ax = sns.barplot(y=y, x=x, orient='h', palette="winter", alpha=0.8)
 plt.title('Kickstarter Top 15 Sub-Category Count')
 plt.show()
 
-df.columns = ['ID', 'name', 'category', 'main_category', 'currency', 'deadline',
-       'goal', 'launched', 'pledged', 'state', 'backers', 'country',
-       'usd_pledged']
+df.columns = ['ID', 'name', 'category', 'main_category', 'currency', 'deadline', 'goal', 'launched', 'pledged', 'state', 'backers', 'country', 'usd_pledged', 'usd_pledged_real', 'usd_goal_real']
 
 # Convert string to float
 df.loc[:,'usd_pledged'] = pd.to_numeric(df['usd_pledged'], downcast='float', errors='coerce')
@@ -104,16 +103,16 @@ fig, ax = plt.subplots(1, 1)
 g = sns.distplot(np.log10(df.goal), kde=False, bins=30)
 
 # revisar o código abaixo para imprimir o gráfico de % de status dos projetos
-#plt.xlabel('Log Goal')
-#plt.title('Distribution of Goal')
-#plt.show()
-#plt.style.use('seaborn-pastel')
-#fig, ax = plt.subplots(1, 1, dpi=100)
-#explode = [0,0,.1,.2, .4]
-#df.state.value_counts().head(5).plot.pie(autopct='%0.2f%%', explode=explode)
-#plt.title('Breakdown of Kickstarter Project Status')
-#plt.ylabel('')
-#plt.show()
+plt.xlabel('Log Goal')
+plt.title('Distribution of Goal')
+plt.show()
+plt.style.use('seaborn-pastel')
+fig, ax = plt.subplots(1, 1, dpi=100)
+explode = [0,0,.1,.2, .4]
+df.state.value_counts().head(5).plot.pie(autopct='%0.2f%%', explode=explode)
+plt.title('Breakdown of Kickstarter Project Status')
+plt.ylabel('')
+plt.show()
 
 print(df.country.value_counts())
 
