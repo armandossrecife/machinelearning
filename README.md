@@ -12,3 +12,5 @@ Pacotes utilizados:
 pandas, numpy, sklearn, seaborn, matplotlib
 
 Execute: python3 teste.py
+
+Obs: Dataset baseado no conjunto de dados disponíveis em https://www.kaggle.com/kemical/kickstarter-projects
