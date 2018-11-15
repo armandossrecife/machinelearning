@@ -1,10 +1,11 @@
+# -*- coding: utf-8 -*-
+
 import sys
 import pandas as pd
 from datetime import datetime as dt
 import numpy as np
 
-# Bibliotecas necessárias para o treinamento da MLP
-# import matplotlib.pyplot as plt
+# MLP
 from sklearn.neural_network import MLPClassifier
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score
@@ -97,8 +98,35 @@ if __name__ == '__main__':
             labels, x, y = normalize_data(tdata, ['running_days', 'backers', 'usd_pledged_real', 'usd_goal_real'], 'state')
 
             print("Iniciando treinamento da MLP")
+
+            #['category' 'main_category' 'state' 'backers' 'country' 'usd_pledged_real' 'usd_goal_real' 'running_days']
+
+
+            # Uma fração da matriz
+            test_x = x[0:379,:]
+            test_y = y[0:379]
+
             # Testing the MLP
-            # x_train, x_test, y_train, y_test = train_test_split(X_df,y_df, test_size= 0.25, random_state=27)
+            x_train, x_test, y_train, y_test = train_test_split(test_x, test_y, test_size= 0.7, random_state=27)
+            # clf = MLPClassifier(hidden_layer_sizes=(7, 50, 1), max_iter=1000, alpha=1, solver='sgd', verbose=10, random_state=21,tol=0.000000001)
+            clf = MLPClassifier(hidden_layer_sizes=(100, 100, 100), max_iter=1000, alpha=0.001, solver='sgd', verbose=10, random_state=21,tol=0.000000001)
+            clf.fit(x_train, y_train)
+
+            y_pred = clf.predict(x_test)
+
+            print("x_test: ", x_test)
+            print("Predict de x_test", y_pred)
+
+            c = 0
+            i = 0
+            while i < y_test.shape[0]:
+                if y_test[i] == y_pred[i]:
+                    c = c + 1
+                i = i + 1
+            print(y_test.shape[0])
+            print(c)
+
+            # accuracy_score(y_test, y_pred, normalize=False)
 
     except Exception as e:
         print(e)
