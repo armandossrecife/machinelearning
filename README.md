@@ -6,7 +6,7 @@ Fazer a análise do dataset de projetos do Kickstarter.
 
 Dataset: ks-projects-201801.csv
 
-Script: teste.py
+Script: teste-ks-projects.py
 
 Pacotes utilizados:
 pandas, numpy, sklearn, seaborn, matplotlib
