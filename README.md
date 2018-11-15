@@ -12,15 +12,21 @@ Caso você não tenha um pacote instalado na sua instância do Python3 use o pip
 
 Exemplo: pip3 install nome_do_pacote
 
-## Aprendizagem Automática - KMEANS
-Testando essa paradinha com o KMeans.
+## Preparação de ambiente:
 
-### Executar o programa
-- python3 main.py ks-projects-201801.csv
+Pré-requisitos:
+Python 3
+Pacote pip
+Pacote virtualenv
 
-### Dependências
-- python3
-- scikit-learn
-- pandas
-- numpy
-- matplotlib
+Comando para criar ambientes usando python3:
+virtualenv -p python3 ./env
+
+Comando para ativar o ambiente virtual:
+source ./env/bin/activate
+
+Comando para criar o arquivo de dependências do projeto:
+pip freeze > requirements.txt
+
+Comando para instalar dependências do projeto:
+pip install -r requirements.txt
