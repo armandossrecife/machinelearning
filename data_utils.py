@@ -101,13 +101,12 @@ if __name__ == '__main__':
 
             #['category' 'main_category' 'state' 'backers' 'country' 'usd_pledged_real' 'usd_goal_real' 'running_days']
 
-
             # Uma fração da matriz
             test_x = x[0:379,:]
             test_y = y[0:379]
 
             # Testing the MLP
-            x_train, x_test, y_train, y_test = train_test_split(test_x, test_y, test_size= 0.7, random_state=27)
+            x_train, x_test, y_train, y_test = train_test_split(test_x, test_y, test_size= 0.3, random_state=27)
             # clf = MLPClassifier(hidden_layer_sizes=(7, 50, 1), max_iter=1000, alpha=1, solver='sgd', verbose=10, random_state=21,tol=0.000000001)
             clf = MLPClassifier(hidden_layer_sizes=(100, 100, 100), max_iter=1000, alpha=0.001, solver='sgd', verbose=10, random_state=21,tol=0.000000001)
             clf.fit(x_train, y_train)
