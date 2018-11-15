@@ -12,8 +12,6 @@ Caso você não tenha um pacote instalado na sua instância do Python3 use o pip
 
 Exemplo: pip3 install nome_do_pacote
 
----------------------------------------------------------------------------------------
-
 ## Preparação de ambiente:
 
 Pré-requisitos:
