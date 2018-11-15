@@ -1,24 +1,24 @@
-## 1. O que é a plataforma Kickstarter?*
+1. O que é a plataforma Kickstarter?*
 
-## 2. Quais os objetivos queremos atingir ao analisar o dataset do Kickstarter?
+2. Quais os objetivos queremos atingir ao analisar o dataset do Kickstarter?
 
-## 3. Qual a metodologia vamos usar para analisar os dados?
+3. Qual a metodologia vamos usar para analisar os dados?
 - Quais são as informações importantes das campanhas?
 - Que dados existem? Nome da campanha, valor que deve ser arrecadado, número de apoiadores, estado da campanha (successful, failed, cancelled, or live), tempo de criação, lançamento e encerramento. 
 país, categorias e subcategorias
 - Quais os dados serão extraídos? Número de dias entre criação da campanha, lançamento e encerramento
 
-## 4. Quais os insights que vamos ter após as análises dos dados?
+4. Quais os insights que vamos ter após as análises dos dados?
 - Campanhas bem datalhadas tem sucesso?
 - Campanhas com um tempo médio de x dias tem mais sucesso?
 - Campanhas que arrecadam y U$ tem mais sucesso?
 - Campanhas que tenham z apoiadores tem mais sucesso?
 
-## 5. Como será nosso modelo?
+5. Como será nosso modelo?
 - Quais features serão escolhidas?
 - Quais labels serão escolhidos?
 
-## 6. Quais serão os modelos de machine learning vamos escolher?
+6. Quais serão os modelos de machine learning vamos escolher?
 Por que o K-Means?
 - Quais as informações e insight foram identificados?
 
@@ -26,7 +26,7 @@ Por que o Multilayer Perceptron?
 - Quais as informações e insight foram identificados?
 - Qual será o dado de predição?
 
-## 7. Conclusões? 
+7. Conclusões? 
 a) Análise quantitativa  das categorias e subcategorias de projetos
 Quais as categorias que mais receberam apoio?
 Quais as categorias que menos receberam apoio?
@@ -65,3 +65,10 @@ colunas = Index(['ID', 'name', 'category', 'main_category', 'currency', 'deadlin
 'usd_pledged' : ['Float', 'Valor prometido para os apoiadores', 'É preciso normalizar'],
 'usd_pledged_real' : ['Float', 'Valor prometido real dado aos apoiadores', 'É preciso normalizar'],
 'usd_goal_real' : ['Float', 'Valor do objetivo alcançado para o projeto', 'É preciso normalizar']
+
+Resumo:
+1- Justificar a motivação para o trabalho e apresentar gráficos com análise dos dados 
+2- Implementar MLP (predição de falha/sucesso)
+3- Implementar K-means
+4- Apresentar métricas para o modelo MLP
+5- Gerar gráficos e interpretar resultados do K-means
