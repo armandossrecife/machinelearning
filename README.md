@@ -11,7 +11,7 @@ Script: teste-ks-projects.py
 Pacotes utilizados:
 pandas, numpy, sklearn, seaborn, matplotlib
 
-Execute: python3 teste.py
+Execute: python3 teste-ks-projects.py
 
 Obs: Dataset baseado no conjunto de dados disponíveis em https://www.kaggle.com/kemical/kickstarter-projects
 
