@@ -27,5 +27,24 @@ def transforma_dataframes_dummies_em_arrays(Xdummies_df, Ydummies_df):
     Y  = Ydummies_df['state_successful'] #foi escolhido apenas a caracteristica de sucesso ou não sucesso como label para o resultado da avaliacao do projeto
     return X, Y
 
+def to_time(str, mask):
+    return dt.strptime(str, mask)
+
+def col_dict(dataframe, col):
+    unique_values = dataframe[col].unique()
+    dc = {}
+
+    for idx,val in enumerate(unique_values):
+        dc[val] = idx
+
+    return dc
+
+def to_numeric(dataframe, col):
+    df = dataframe
+    dc = col_dict(df, col)
+    df[col] = df[col].apply(lambda x: dc[x])
+
+    return df, dc
+
 if __name__ == '__main__':
     print("Módulo de manipulação de dados do tipo dataframe e transformação em arrays")
