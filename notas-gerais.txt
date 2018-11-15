@@ -1,0 +1,39 @@
+1. Análise quantitativa  das categorias de projetos
+Quais as categorias que mais receberam apoio?
+Quais as categorias que menos receberam apoio?
+
+Quais as sub-categorias que mais receberam apoio?
+Quais as sub-categorias que menos receberam apoio?
+
+2. Como ficou a disbribuição dos objetivos (em U$) dos projetos?
+
+3. Como é a distribuição dos status (sucess, failed, live, canceled, undefined) dos projetos?
+
+4. Como é a distribuição dos benefícios entre os apoiadores e não apoiadores?
+
+5. Como é a concentração de valor de projetos entre os apoiadores?
+
+6. Como é o retorno dos valores comprometidos?
+
+Sobre o dataset:
+
+colunas = Index(['ID', 'name', 'category', 'main_category', 'currency', 'deadline',
+       'goal', 'launched', 'pledged', 'state', 'backers', 'country',
+       'usd_pledged', 'usd_pledged_real', 'usd_goal_real'],
+      dtype='object')
+
+'ID': ['Inteiro', 'Sequência da amostra']
+'name': ['String', 'Nome do Projeto']
+'category: ['String', 'Sub-categoria do Projeto', 'Deve ser categorizada']
+'main_category': ['String', 'Categoria do Projeto', 'Deve ser categorizada']
+'currency' : ['Float', 'valor do Projeto', 'É preciso normalizar'],
+'deadline' : ['Date', 'prazo de encerramento da campanha', 'É preciso transformar em timestamp'],
+'goal': ['Float', 'Valor em U$ do objetivo da campanha', 'É preciso normalizar'],
+'launched' : ['Date', 'data do lançamento da campanha', 'É preciso transformar em timestamp'],
+'pledged' : ['Float', 'Valor prometido para os apoiadores', 'É preciso normalizar'],
+'state' : ['String', 'Estado que se encontra o projeto', 'É preciso categorizar'],
+'backers' : ['Iteiro', 'Quantidade de apoiadores do projeto', 'É preciso categorizar'],
+'country' : ['String', 'País do projeto', 'É preciso categorizar'],
+'usd_pledged' : ['Float', 'Valor prometido para os apoiadores', 'É preciso normalizar'],
+'usd_pledged_real' : ['Float', 'Valor prometido real dado aos apoiadores', 'É preciso normalizar'],
+'usd_goal_real' : ['Float', 'Valor do objetivo alcançado para o projeto', 'É preciso normalizar']
