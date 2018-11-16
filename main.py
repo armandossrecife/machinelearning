@@ -10,6 +10,7 @@ from sklearn import preprocessing
 from sklearn.cluster import KMeans
 from sklearn.decomposition import PCA
 
+import seaborn as sns
 
 def to_time(str, mask):
     return DT.strptime(str, mask)
