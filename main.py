@@ -52,7 +52,7 @@ def transform_data(csvdata):
     np_scaled = min_max_scaler.fit_transform(df)
     df_normalized = pd.DataFrame(np_scaled)
 
-    return df_normalized.values, state_dict
+    return df_normalized, state_dict
 
 # https://stackoverflow.com/questions/19197715/scikit-learn-k-means-elbow-criterion
 def elbow(tdata):
@@ -76,8 +76,7 @@ def kmeans(tdata, k):
     # Nice Pythonic way to get the indices of the points for each corresponding cluster
     return {i: np.where(km.labels_ == i)[0] for i in range(km.n_clusters)}
 
-def analysis(k, df, dc, state_dc):
-    print(state_dc)
+def analysis(k, df, dc):
     for i in range(0, k):
         cls_df = df.iloc[dc[i]]
         
@@ -85,18 +84,54 @@ def analysis(k, df, dc, state_dc):
         print('---- States in cluster {} ----'.format(i))
         print(meme)
 
+def backer_pledge_plot(df, dc):
+    markers = {'successful':'+', 'failed':'x'}
+  
+    for m in markers:
+        d = df[df['state'] == dc[m]]
+        plt.scatter(d['backers'], d['usd_pledged_real'], s=20, marker=markers[m])
+    
+    plt.xlabel("Backers")
+    plt.ylabel("Dinheiro dado em dólares")
+    plt.legend(['sucesso', 'falha'])
+    plt.show()
+
+def backer_pledge_plot_k(df, dc, indexes_dict):
+    markers = {'successful':'+', 'failed':'x', 'canceled':'x', 'undefined':'x', 'suspended':'x', 'live':'o'}
+    colors = ['red','green','blue','orange']
+
+    # para cada cluster
+    for c in indexes_dict:
+        d = df.iloc[indexes_dict[c]] # os dados desse cluster
+        plt.scatter(d['usd_goal_real'], d['usd_pledged_real'], s=2, c=colors[c])
+    
+    plt.xlabel("Objetivo em dólares")
+    plt.ylabel("Dinheiro dado em dólares")
+    plt.legend(['Cluster 0', 'Cluster 1', 'Cluster 2', 'Cluster 3'])
+    plt.show()
+
 if __name__ == '__main__':
     # The second arg is the file to get the data from!
     try:
-        if len(sys.argv) == 2:    
+        if len(sys.argv) == 2:
             data = pd.read_csv(sys.argv[1])
             data = data[['state','backers','usd_pledged_real','deadline','launched','usd_goal_real']]
             tdata, state_dict = transform_data(data)
-            #elbow(tdata) # Para ver o gráfico bonito
+            df_tdata = tdata
+            tdata = tdata.values
+            # elbow(tdata) # Para ver o gráfico bonito
            
             k = 4
             indexes_dict = kmeans(tdata, k=k)
-            analysis(k, data, indexes_dict, state_dict)
+
+            print(state_dict)
+            
+            for i in indexes_dict:
+                print(len(indexes_dict[i]))
+
+            analysis(k, data, indexes_dict)
+            #backer_pledge_plot(data, state_dict)
+            backer_pledge_plot_k(data, state_dict, indexes_dict)
 
 
     except Exception as e:
