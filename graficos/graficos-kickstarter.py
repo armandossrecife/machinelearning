@@ -58,8 +58,18 @@ def plota_status_projetos(titulo):
     plt.ylabel('')
     plt.show()
 
+def plota_histogrma_projeto_success(titulo):
+    df_status = df[['status']==1]
+    array_dias = df_status.values.reshape(1, len(df_status))
+    dias=pd.Series(array_dias[0])
+    plt.hist(dias, bins=10)
+    plt.ylabel('Objetivo em U$')
+    plt.xlabel('Dias')
+    plt.title('Campanhas de Sucesso')
+    plt.show()
+
 print("Carregando dados do arquivo ks-projects-201801.csv...")
-df = carrega_dados('ks-projects-201801.csv')
+df = carrega_dados('dados/ks-projects-201801.csv')
 print("Dados carregados com sucesso. ")
 
 df = limpa_dados(df)
