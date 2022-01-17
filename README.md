@@ -4,6 +4,8 @@ Projeto da Disciplina de Aprendizagem de Máquina
 
 Fazer a análise do dataset de projetos do Kickstarter.
 
+![License](https://img.shields.io/badge/License-BSD%202--Clause-orange.svg) 
+
 Dataset: dados/ks-projects-201801.csv
 
 Obs: Dataset baseado no conjunto de dados disponíveis em https://www.kaggle.com/kemical/kickstarter-projects
