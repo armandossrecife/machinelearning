@@ -1,6 +1,6 @@
 # Aprendizagem Automática
 
-Projeto da Disciplina de Aprendizagem de Máquina
+Projeto de Aprendizagem de Máquina
 
 Fazer a análise do dataset de projetos do Kickstarter.
 
